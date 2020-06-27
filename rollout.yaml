@@ -7,14 +7,14 @@ spec:
   revisionHistoryLimit: 2
   selector:
     matchLabels:
-      id: rollout-canary
+      id: helloworld
   template:
     metadata:
       labels:
-        id: rollout-canary
+        id: helloworld
     spec:
       containers:
-      - name: rollouts-demo
+      - name: helloworld
         image: helloworld:latest
         imagePullPolicy: Always
   strategy:
