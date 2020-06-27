@@ -2,17 +2,12 @@ kind: Service
 apiVersion: v1
 metadata:
   name: helloworld
-  namespace: default
   labels:
     app: helloworld
 spec:
   ports:
-    - name: webserver
-      protocol: TCP
-      port: 80
-      targetPort: 80
+  - port: 8080
   selector:
     app: helloworld
-  type: ClusterIP
-  sessionAffinity: None
+  type: NodePort
 

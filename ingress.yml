@@ -15,9 +15,8 @@ spec:
     - host: helloworld.192.168.64.5.nip.io
       http:
         paths:
-          - path: /
-            pathType: ImplementationSpecific
+          - path: /hello
             backend:
               serviceName: helloworld
-              servicePort: 80
+              servicePort: 8080
 
