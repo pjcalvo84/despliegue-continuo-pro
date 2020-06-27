@@ -1,13 +1,15 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: helloworld
+  name: rollout-canary
   labels:
-    app: helloworld
+    app: rollout-canary
+    id: rollout-canary
 spec:
   ports:
   - port: 8080
   selector:
-    app: helloworld
-  type: NodePort
+    app: rollout-canary
+    id: rollout-canary
+  type: LoadBalancer
 

@@ -1,10 +1,10 @@
 kind: Ingress
 apiVersion: extensions/v1beta1
 metadata:
-  name: helloworld
+  name: rollout-canary
   namespace: default
   labels:
-    app: helloworld
+    app: rollout-canary
   annotations:
     kubernetes.io/ingress.class: nginx
     kubernetes.io/ingress.provider: nginx
@@ -17,6 +17,6 @@ spec:
         paths:
           - path: /hello
             backend:
-              serviceName: helloworld
+              serviceName: rollout-canary
               servicePort: 8080
 
