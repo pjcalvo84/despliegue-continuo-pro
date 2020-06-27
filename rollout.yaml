@@ -16,7 +16,7 @@ spec:
       containers:
       - name: helloworld
         image: helloworld:latest
-        imagePullPolicy: Always
+        imagePullPolicy: Never
   strategy:
     canary:
       steps:
