@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: rollout-canary
+  name: helloworld
 spec:
   replicas: 4
   revisionHistoryLimit: 2
   selector:
     matchLabels:
-      id: helloworld
+      app: helloworld
   template:
     metadata:
       labels:
-        id: helloworld
+        app: helloworld
     spec:
       containers:
       - name: helloworld
