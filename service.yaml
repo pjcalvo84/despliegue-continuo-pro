@@ -1,15 +1,14 @@
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
-  name: rollout-canary
   labels:
-    app: rollout-canary
     id: rollout-canary
+  name: app
 spec:
   ports:
-  - port: 8080
+  - port: 80
+    protocol: TCP
+    targetPort: 5000
   selector:
-    app: rollout-canary
     id: rollout-canary
   type: LoadBalancer
-
