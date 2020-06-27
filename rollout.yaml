@@ -15,8 +15,8 @@ spec:
     spec:
       containers:
       - name: rollouts-demo
-        image: helloworld:latest
-        imagePullPolicy: Never
+        image: pangliter/helloworld:latest
+        imagePullPolicy: Always
   strategy:
     canary:
       steps:
