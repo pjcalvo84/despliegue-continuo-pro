@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
         - name: helloworld
-          image: 'localhost:5000/helloworld:ci'
+          image: 'registry.kube-system/helloworld:ci'
+          imagePullPolicy: Never
           ports:
             - name: webserver
               containerPort: 80
