@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: helloworld
-          image: 'pangliter/helloworld1'
+          image: 'pangliter/helloworld'
           imagePullPolicy: IfNotPresent
       restartPolicy: Always
   strategy:
