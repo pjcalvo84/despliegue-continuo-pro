@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: helloworld-preview
+  labels:
+    app: helloworld
+spec:
+  ports:
+  - port: 8080
+  selector:
+    app: helloworld
+  type: LoadBalancer
