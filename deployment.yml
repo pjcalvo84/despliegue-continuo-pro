@@ -14,13 +14,13 @@ spec:
     spec:
       containers:
         - name: helloworld
-          image: 'pangliter/helloworld'
+          image: 'pangliter/helloworld2'
           imagePullPolicy: IfNotPresent
       restartPolicy: Always
   strategy:
     blueGreen:
-       activeService: rollouts-demo
-       previewService: rollouts-demo-preview
+       activeService: helloworld
+       previewService: helloworld-preview
     # canary:
     #   steps:
     #   - setWeight: 10
