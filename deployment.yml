@@ -1,31 +1,20 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Rollout
+kind: Deployment
+apiVersion: apps/v1
 metadata:
-  name: helloworld
+  name: helloworld2
 spec:
-  replicas: 4
+  replicas: 2
   selector:
     matchLabels:
-      app: helloworld
+      app: helloworld2
   template:
     metadata:
       labels:
-        app: helloworld
+        app: helloworld2
     spec:
       containers:
-        - name: helloworld
+        - name: helloworld2
           image: 'pangliter/helloworld2'
           imagePullPolicy: IfNotPresent
       restartPolicy: Always
-  strategy:
-    blueGreen:
-       activeService: helloworld
-       previewService: helloworld-preview
-    # canary:
-    #   steps:
-    #   - setWeight: 10
-    #   # Rollouts can be manually resumed by running `kubectl argo rollouts promote ROLLOUT`
-    #   - pause: {}
-    #   - setWeight: 50
-    #   - pause: { duration: 20 } # two minutes
 

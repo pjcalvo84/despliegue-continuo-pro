@@ -1,27 +1,30 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Rollout
-# metadata:
-#   name: rollout-canary
-# spec:
-#   replicas: 10
-#   revisionHistoryLimit: 2
-#   selector:
-#     matchLabels:
-#       id: rollout-canary
-#   template:
-#     metadata:
-#       labels:
-#         id: rollout-canary
-#     spec:
-#       containers:
-#       - name: rollouts-demo
-#         image: pangliter/helloworld
-#         imagePullPolicy: Always
-#   strategy:
-#     canary:
-#       steps:
-#       - setWeight: 10
-#       # Rollouts can be manually resumed by running `kubectl argo rollouts promote ROLLOUT`
-#       - pause: {}
-#       - setWeight: 50
-#       - pause: { duration: 120 } # two minutes
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: helloworld
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: helloworld
+  template:
+    metadata:
+      labels:
+        app: helloworld
+    spec:
+      containers:
+        - name: helloworld
+          image: 'pangliter/helloworld'
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+  strategy:
+    blueGreen:
+       activeService: helloworld
+       previewService: helloworld-preview
+    # canary:
+    #   steps:
+    #   - setWeight: 10
+    #   # Rollouts can be manually resumed by running `kubectl argo rollouts promote ROLLOUT`
+    #   - pause: {}
+    #   - setWeight: 50
+    #   - pause: { duration: 20 } # two minutes
