@@ -1,5 +1,5 @@
-kind: Deployment
-apiVersion: apps/v1
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: helloworld
 spec:
@@ -17,4 +17,12 @@ spec:
           image: 'pangliter/helloworld'
           imagePullPolicy: IfNotPresent
       restartPolicy: Always
+  strategy:
+    canary:
+      steps:
+      - setWeight: 10
+      # Rollouts can be manually resumed by running `kubectl argo rollouts promote ROLLOUT`
+      - pause: {}
+      - setWeight: 50
+      - pause: { duration: 120 } # two minutes
 
