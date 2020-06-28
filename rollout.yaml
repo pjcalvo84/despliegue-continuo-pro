@@ -3,7 +3,7 @@ kind: Rollout
 metadata:
   name: helloworld
 spec:
-  replicas: 4
+  replicas: 2
   selector:
     matchLabels:
       app: helloworld
@@ -21,6 +21,7 @@ spec:
     blueGreen:
        activeService: helloworld
        previewService: helloworld-preview
+       autoPromotionEnabled: false
     # canary:
     #   steps:
     #   - setWeight: 10

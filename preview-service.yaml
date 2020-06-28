@@ -3,10 +3,10 @@ apiVersion: v1
 metadata:
   name: helloworld-preview
   labels:
-    app: helloworld2
+    app: helloworld
 spec:
   ports:
   - port: 8080
   selector:
-    app: helloworld2
+    app: helloworld
   type: LoadBalancer
